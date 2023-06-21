@@ -12,3 +12,6 @@ export const TokenValidation = (req: Request, res: Response, next: NextFunction)
     console.log(token);
     next();
 }
+
+
+

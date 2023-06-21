@@ -47,21 +47,12 @@ class ProvinciaController {
             res.status(404).json({ text: "la provincia con id no existe:" + id });
         });
     }
-    // public async find(req: Request, res: Response) {
-    //     console.log(req.params.id);
-    //     const { id } = req.params;
-    //     const provincia: IProvincia = await provinceRepo.buscarId(parseInt(id));
-    //     if (this.validator.validate(provincia))
-    //         return res.json(provincia);
-    //     res.status(404).json({ text: "la provincia con id no existe:" + id });
-    // }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
             const { id } = req.params;
             const result = yield provinceRepo_1.default.actualizar(req.body, parseInt(id));
-            // res.send('Provincia '+ req.params.id +' actualizada!!!');
-            return res.json({ text: 'Actualizando unaa provincia con id.. ' + id });
+            return res.json({ text: 'Actualizando una provincia con id ' + id });
         });
     }
     delete(req, res) {

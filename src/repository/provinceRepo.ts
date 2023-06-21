@@ -3,7 +3,7 @@ import { IProvincia } from "../models/provinciaModel";
 
 class ProvinceRepo {
 	// private db: Connection;
-	private db:any;
+	private db: any;
 
 	constructor() {
 		this.db = mysql.createConnection({
@@ -14,12 +14,9 @@ class ProvinceRepo {
 		});
 	}
 
-
 	async listar() {
-
 		// const repoProvincias=await this.db.query('select * from tprovincias');
 		// return repoProvincias[0];
-		
 		const result = await new Promise((resolve, reject) => {
 			this.db.query('select id, nombre, capital, descripcion, imagen from provincias', (err: any, rows: unknown) => {
 				if (!err) {
@@ -29,7 +26,6 @@ class ProvinceRepo {
 				}
 			})
 		})
-
 		return result;
 	}
 
@@ -49,13 +45,16 @@ class ProvinceRepo {
 	}
 
 	async crear(provincia: IProvincia) {
-		const result = (await this.db.promise().query('INSERT INTO provincias SET ?', [provincia]))[0].affectedRows;
+		const { nombre, capital, descripcion } = provincia;
+		const result = (await this.db.promise().query('INSERT INTO provincias SET  nombre = ?, capital = ?, descripcion = ?', [nombre, capital, descripcion]))[0].affectedRows;
 		console.log(result);
 		return result;
 	}
 
 	async actualizar(provincia: IProvincia, id: number) {
-		const result = (await this.db.promise().query('UPDATE provincias SET ? WHERE ID = ?', [provincia, id]))[0].affectedRows;
+		console.log(provincia);
+		const { nombre, capital, descripcion } = provincia;
+		const result = (await this.db.promise().query('UPDATE provincias SET nombre = ?, capital = ?, descripcion = ? WHERE ID = ?', [nombre, capital, descripcion, id]))[0].affectedRows;
 		console.log(result);
 		return result;
 	}

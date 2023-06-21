@@ -58,14 +58,17 @@ class ProvinceRepo {
     }
     crear(provincia) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.db.promise().query('INSERT INTO provincias SET ?', [provincia]))[0].affectedRows;
+            const { nombre, capital, descripcion } = provincia;
+            const result = (yield this.db.promise().query('INSERT INTO provincias SET  nombre = ?, capital = ?, descripcion = ?', [nombre, capital, descripcion]))[0].affectedRows;
             console.log(result);
             return result;
         });
     }
     actualizar(provincia, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.db.promise().query('UPDATE provincias SET ? WHERE ID = ?', [provincia, id]))[0].affectedRows;
+            console.log(provincia);
+            const { nombre, capital, descripcion } = provincia;
+            const result = (yield this.db.promise().query('UPDATE provincias SET nombre = ?, capital = ?, descripcion = ? WHERE ID = ?', [nombre, capital, descripcion, id]))[0].affectedRows;
             console.log(result);
             return result;
         });
