@@ -18,7 +18,7 @@ class ProvinceRepo {
 		// const repoProvincias=await this.db.query('select * from tprovincias');
 		// return repoProvincias[0];
 		const result = await new Promise((resolve, reject) => {
-			this.db.query('select id, nombre, capital, descripcion, imagen from provincias', (err: any, rows: unknown) => {
+			this.db.query('select id, nombre, capital, descripcion from provincias', (err: any, rows: unknown) => {
 				if (!err) {
 					resolve(rows)
 				} else {

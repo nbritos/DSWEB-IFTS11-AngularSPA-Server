@@ -12,7 +12,7 @@ class UserRoutes {
     }
     config() {
         //ingreso
-        this.router.post('/signin', userController_1.default.signin);
+        this.router.post('/login', userController_1.default.login);
         //metodos crud
         this.router.get('/list', userController_1.default.list);
         this.router.get('/:id', userController_1.default.find);

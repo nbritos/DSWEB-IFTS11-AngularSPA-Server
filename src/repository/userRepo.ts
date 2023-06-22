@@ -18,10 +18,8 @@ class UserRepo {
 
 	/* Nota: Aqui cada uno tiene que setear los parametros de su propio servidor MySQL / MariaDB.*/
 	async listar() {
-
 		// const repoProvincias=await this.db.query('select * from tprovincias');
 		// return repoProvincias[0];
-
 		const result = await new Promise((resolve, reject) => {
 			this.db.query('select id, nombre, password from usuarios', (err: any, rows: unknown) => {
 				if (!err) {
@@ -45,11 +43,9 @@ class UserRepo {
 		console.log(encontrado);
 		return null;
 	}
-	//Devuelve un objeto cuya fila en la tabla usuarios coincide con nombre.
-	//Si no la encuentra devuelve null
+	
 	async buscarNombre(nombre: string) {
 		const encontrado: any = await this.db.promise().query('SELECT * FROM usuarios WHERE nombre = ?', [nombre]);
-		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
 		if (encontrado.length > 1)
 			return encontrado[0][0];
 		return null;
@@ -62,8 +58,7 @@ class UserRepo {
 				usuario.email,
 				usuario.password,
 				usuario.rol]))[0].affectedRows;
-				return result;
-
+		return result;
 	}
 
 	// async crearUsuario(usuario: Usuario) {
@@ -72,7 +67,7 @@ class UserRepo {
 	// 	return result;
 	// }
 
-	
+
 	// //Devuelve 1 si logro actualizar el usuario indicado por id
 	async actualizar(usuario: Usuario, id: string) {
 		const result = (await this.db.query('UPDATE usuarios SET ? WHERE ID = ?', [usuario, id]))[0].affectedRows;
