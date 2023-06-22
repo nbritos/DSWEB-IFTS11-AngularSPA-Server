@@ -19,8 +19,8 @@ class ProvinceRoutes {
         // this.router.put('/:id', (req,res) => {})
         /******/
 
-        // this.router.get('/', TokenValidation, provinciaController.list); //hecho
-        this.router.get('/', provinciaController.list); //prueba
+        this.router.get('/', TokenValidation, provinciaController.list); //hecho
+        // this.router.get('/', provinciaController.list); //prueba
         this.router.get('/:id', provinciaController.find); //hecho
         this.router.post('/', provinciaController.addProvince); //hecho
         this.router.put('/:id', provinciaController.update); //hecho

@@ -5,7 +5,7 @@ import ProvinceValidator from "validators/provinceValidator";
 
 class ProvinciaController {
 
-    // validator: ProvinceValidator = new ProvinceValidator();
+    //validator: ProvinceValidator = new ProvinceValidator(); este valida regex
 
     //CRUD	
     public async list(req: Request, res: Response) {

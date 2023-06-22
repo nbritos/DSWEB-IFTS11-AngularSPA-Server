@@ -16,25 +16,11 @@ class UserController {
 		if (result != null && result.nombre == nombre && result.password == password) {
 			const token: string = jwt.sign({ _id: result.id }, "secretKey");
 			res.json({ "login": "ok", "mensaje": "Bienvenido " + result.nombre, token: token });
+			console.log(token);
 			return;
 		}
 		res.json({ "login": "incorrecto", "mensaje": "Usuario y/o contraseña incorrectos!!" });
 	}
-	// public async login(req: Request, res: Response) {
-	// 	const { nombre, password } = req.body; /* hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.*/
-	// 	const result = await userRepo.buscarNombre(nombre);
-	// 	console.log(nombre);
-	// 	console.log(password);
-	// 	console.log(result);
-	// 	if (result != null) {
-	// 		if (result.nombre == nombre && result.password == password) {
-	// 			const token: string = jwt.sign({ _id: result.id }, "secretKey"); //aca me crea el token
-	// 			res.json({ "login": "ok", "mensaje": "Bienvenido " + result.nombre, token: token });
-	// 			return;
-	// 		}
-	// 	}
-	// 	res.json({ "login": "incorrecto", "mensaje": "Usuario no registrado" });
-	// }
 
 	public async list(req: Request, res: Response) {
 		console.log(req.header("Authorization"));//Observamos el valor del token

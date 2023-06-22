@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const provinceRepo_1 = __importDefault(require("../repository/provinceRepo"));
 class ProvinciaController {
-    // validator: ProvinceValidator = new ProvinceValidator();
+    //validator: ProvinceValidator = new ProvinceValidator(); este valida regex
     //CRUD	
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
